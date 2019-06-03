@@ -1,42 +1,42 @@
 package ru.avalon.java.actions;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.*;
 
 /**
  * Действие, которое перемещает файлы в пределах дискового пространства.
  */
-public class FileMoveAction implements Action {
+public class FileDeleteAction implements Action {
 
+    private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     /**
      * {@inheritDoc}
      */
-    private Path what, where;
+    private Path path;
 
-    public FileMoveAction(String whatCopy, String whereCopy) {
-        what = Paths.get(whatCopy);
-        where = Paths.get(whereCopy);
+    public FileDeleteAction(String path) throws IOException {
+        this.path = Paths.get(path);
     }
 
-     @Override
+    @Override
     public void run() {
-        synchronized (what) {
-            try {            
-                move();  
+        synchronized (path) {
+            try {
+                delete();
             } catch (IOException e) {
-                System.out.println("Файл не был перемещен!");
+                System.out.println("Файл не был удален!");
                 e.printStackTrace(System.err);
             }
         }
     }
 
-    private void move() throws IOException {
+    private void delete() throws IOException {
 
-        if (!Files.exists(what)) {
+        if (!Files.exists(path)) {
             System.out.println("Файл не найден");
         } else {
-            Files.move(what, where.resolve(what.getFileName()), StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("Файл перемещен");
+            Files.delete(path);
+            System.out.println("Файл удален");
         }
     }
 

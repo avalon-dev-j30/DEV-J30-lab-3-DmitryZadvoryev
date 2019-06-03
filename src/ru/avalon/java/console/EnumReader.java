@@ -22,7 +22,8 @@ public class EnumReader<E extends Enum<E>> implements Closeable {
      * шаблона
      */
     private Class<E> cls;
-
+    
+    
     /**
      * Основной констуктор класса.
      * 
