@@ -20,14 +20,12 @@ public class FileMoveAction implements Action {
 
      @Override
     public void run() {
-        synchronized (what) {
             try {            
                 move();  
             } catch (IOException e) {
                 System.out.println("Файл не был перемещен!");
                 e.printStackTrace(System.err);
             }
-        }
     }
 
     private void move() throws IOException {

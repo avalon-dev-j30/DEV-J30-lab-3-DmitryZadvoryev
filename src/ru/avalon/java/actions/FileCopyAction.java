@@ -22,13 +22,11 @@ public class FileCopyAction implements Action {
      */
     @Override
     public void run() {
-        synchronized (what) {
             try {            
                 copy();  
             } catch (IOException e) {
                 System.out.println("Файл не скопирован!");
-                e.printStackTrace(System.err);
-            }  
+                e.printStackTrace(System.err);     
         }
     }
 

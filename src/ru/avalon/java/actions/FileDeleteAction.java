@@ -20,13 +20,11 @@ public class FileDeleteAction implements Action {
 
     @Override
     public void run() {
-        synchronized (path) {
             try {
                 delete();
             } catch (IOException e) {
                 System.out.println("Файл не был удален!");
-                e.printStackTrace(System.err);
-            }
+                e.printStackTrace(System.err);    
         }
     }
 

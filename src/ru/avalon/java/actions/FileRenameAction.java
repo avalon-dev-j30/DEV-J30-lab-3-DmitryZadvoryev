@@ -22,14 +22,12 @@ public class FileRenameAction implements Action {
      */
     @Override
     public void run() {
-        synchronized (file) {
             try {
                 rename();
             } catch (IOException e) {
                 System.out.println("Файл не был переименован!");
                 e.printStackTrace(System.err);
             }
-        }
     }
 
     private void rename() throws IOException {
