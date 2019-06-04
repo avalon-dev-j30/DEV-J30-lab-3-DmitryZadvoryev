@@ -43,7 +43,7 @@ public class Lab3 extends ConsoleUI<Commands> {
      * {@inheritDoc}
      */
     @Override
-    protected synchronized void onCommand(Commands command) throws IOException {
+    protected void onCommand(Commands command) throws IOException {
             switch (command) {
                 case copy:
                     System.out.print("Путь к файлу: >");
